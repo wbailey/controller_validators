@@ -1,0 +1,29 @@
+ControllerValidators
+====================
+
+Allows ActiveRecord like validations for parameter validation in your controller directly.
+
+
+Example
+=======
+
+>> tv = TestValidators.new
+=> #<TestValidators:0x2471434>
+>> class TestValidators < ActionController::Base
+>> def xx( val )
+>> validate_numericality_of!( val )
+>> end
+>> end
+=> #<TestValidators:0x246169c>
+>> tv.xx( 1.0 )
+=> nil
+>> tv.xx( '1.0' )
+=> nil
+>> tv.xx( 'wes' )
+VR::ControllerValidators::ValidationException: Invalid value: wes
+from /Users/wes/tvapp/vendor/plugins/controller_validators/lib/vr/controller_validators.rb:104:in `validate_numericality_of!'
+from (irb):14:in `xx'
+from (irb):24
+
+
+Copyright (c) 2010 [Wes Bailey], released under the MIT license
